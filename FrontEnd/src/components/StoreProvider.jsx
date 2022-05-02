@@ -32,3 +32,5 @@ const StoreProvider = ({ children }) => {
 };
 
 export default StoreProvider;
+
+export {Store, initialState}
