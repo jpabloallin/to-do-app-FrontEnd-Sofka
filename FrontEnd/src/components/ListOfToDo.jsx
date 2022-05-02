@@ -7,13 +7,18 @@ const ListOfToDo = () => {
 
     const onCheckbox = (event, note) => {
         const checked = event.currentTarget.checked;
-        console.log(checked)
-        console.log(note) 
         dispatch({
             type: 'update-note',
             payload: {...note,
             done: checked}
         })   
+    }
+
+    const onDelete = (note) => {
+        dispatch({
+            type: 'remove-note',
+            payload: note
+        })
     }
     return (
         <div>
@@ -24,6 +29,7 @@ const ListOfToDo = () => {
                         {note.title} <br />
                         {note.message} <br />
                         <input onChange={(event) => onCheckbox(event,note)} type="checkbox" checked={note.done} />
+                        <button onClick={() => onDelete(note)}>Delete</button>
                     </li>
                 })}
             </ul>
